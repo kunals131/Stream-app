@@ -28,6 +28,7 @@ const StreamCreate = (props) => {
     }
     const onSubmit = (formValues)=>{
         console.log(formValues);
+        
     }
 
     return (
