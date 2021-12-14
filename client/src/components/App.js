@@ -13,9 +13,9 @@ const App = ()=>{
             <Header/>
             <Route path="/" exact><StreamList/></Route>
             <Route path="/streams/new" exact><StreamCreate/></Route>
-            <Route path="/streams/edit" exact><StreamEdit/></Route>
-            <Route path="/streams/delete" exact><StreamDelete/></Route>
-            <Route path="/streams/show" exact><StreamShow/></Route>
+            <Route path="/streams/:id/edit" exact><StreamEdit/></Route>
+            <Route path="/streams/:id/delete" exact><StreamDelete/></Route>
+            <Route path="/streams/:id/" exact><StreamShow/></Route>
         </div>
     )
 }
