@@ -1,4 +1,14 @@
 {
-    "streams" : []
-
+  "streams": [
+    {
+      "title": "this suc",
+      "description": "sus",
+      "id": 1
+    },
+    {
+      "title": "kunal sangtiani",
+      "description": "123",
+      "id": 2
+    }
+  ]
 }
