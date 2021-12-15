@@ -14,8 +14,8 @@ const StreamList = (props) => {
     if (stream.userId === props.currentUserId) {
       return (
         <div className="right floated content">
-          <button className="ui button primary">Edit</button>
-          <button className="ui button negative">Delete</button>
+          <Link to={`/streams/${stream.id}/edit`} className="ui button primary">Edit</Link>
+          <Link to={`/streams/${stream.id}/delete`} className="ui button negative">Delete</Link>
         </div>
       );
     }
