@@ -1,67 +1,21 @@
-import React from 'react'
-import {Field, reduxForm} from 'redux-form';
-import {connect} from 'react-redux';
-import {createStream} from '../../actions';
-import axios from 'axios'
+import React from "react";
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
+import StreamForm from "./StreamForm";
 const StreamCreate = (props) => {
+  console.log(props);
 
-    console.log(props);
+  const onSubmit = (formValues) => {
+    console.log(formValues);
+    props.createStream(formValues);
+  };
 
-    const renderError=({error,touched})=> {
-        if (touched&&error) {
-            return (
-                <div className="ui error message">
-                    <div className="header">{error}</div>
-                </div>
-            )
-        }
-    }
+  return (
+    <div>
+      <h3>Create a Stream</h3>
+      <StreamForm onSubmit={onSubmit}></StreamForm>
+    </div>
+  );
+};
 
-    const renderInput = ({input, label, meta})=>{
-        console.log(meta);
-        const className=`field ${meta.error && meta.touched?'error':''}`
-        return (
-        <div className={className}>
-        <label htmlFor="">{label}</label>
-        <input {...input} autoComplete="off" />
-        {renderError(meta)}
-        </div>
-        )
-    }
-    const onSubmit = (formValues)=>{
-        console.log(formValues);
-        props.createStream(formValues);
-  
-
-    }
-
-    return (
-        <form className="ui form error" onSubmit={props.handleSubmit(onSubmit)}> 
-            <Field label="Enter Title" component={renderInput} name="title"/>
-            <Field name="description" label="Enter Description" component={renderInput}/>
-            <button className="ui botton primary">Submit</button>
-        </form>
-    )
-}
-
-const validate = (formValues)=>{
-    const errors={};
-    if (!formValues.title) {
-        //only ran if user didnt entered a title
-        errors.title='You must enter a title'
-    }
-    if (!formValues.title) {
-        errors.description ='You must enter a description'
-    }
-    return errors;
-}
-
-const formWrapped =  reduxForm({
-    form : 'streamCreate',
-    validate,
-
-})(StreamCreate)
-
-
-
-export default connect(null, {createStream})(formWrapped);
+export default connect(null, { createStream })(StreamCreate);
